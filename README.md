@@ -1,116 +1,215 @@
 # FINAL-DATA-TOOLS-PROJECT
-# Supabase Project — Data Tools
+# My Restaurant Ordering SQL Project
 
-## 📌 Overview
-This project will help you practice **database fundamentals** using **Supabase** (PostgreSQL).  
-You will design a small database, document it, upload your work to GitHub, and present it.  
+<a name="readme-top"></a>
 
-Each student will have a **different project idea/domain**, but must follow the **same standard rules** for fairness and consistency.  
+<!-- TABLE OF CONTENTS -->
 
----
+# 📗 Table of Contents
 
-## ✅ Standard Rules
-- Database must contain **3 tables** minimum.
-- Each table must have at least **5 rows** of sample data.
-- At least **1 foreign key relationship** between tables.
-- Deliverables:
-  1. `schema.sql` — SQL export of your database.
-  2. Documentation:
-     - `README.md` with project description and setup instructions.
-     - `data_dictionary.md` describing all tables/columns.
-     - ERD (Entity Relationship Diagram) saved in `/docs/`.
-  3. GitHub repository containing all files.
-  4. Pull Request (PR) to the class repository with your work.
-  5. Short presentation demo (Week 4).
+- [My SQL Project](#about-project)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 My SQL Project](#about-project)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Usage](#usage)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
 
----
+<!-- PROJECT DESCRIPTION -->
 
-## 🗓 Timeline
+# 📖 My SQL Project <a name="about-project"></a>
 
-### Week 1 — Database Setup
-- Create a Supabase project.
-- Define schema with 3 tables.
-- Insert at least 5 rows per table.
-- Test queries in Supabase SQL editor.
-- Export schema to `schema.sql`.
+**My SQL Project** is a simple Database that uses SQL, Postgres via Supabase and R to create, query and secure a **Bookstore** database.
 
-**Deliverable:** SQL schema + sample data.
+## 🛠 Built With <a name="built-with"></a>
 
----
+### Tech Stack <a name="tech-stack"></a>
+- SQL
+- Postgres DB
 
-### Week 2 — Documentation
-- Write `README.md` with:
-  - Project purpose
-  - Schema overview
-  - Example queries
-- Create `data_dictionary.md` with:
-  - Table name
-  - Column name
-  - Data type
-  - Description
-- Generate ERD (Supabase or dbdiagram.io).
-- Save ERD in `/docs/`.
+<!-- Features -->
 
-**Deliverable:** README + Data Dictionary + ERD.
+### Key Features <a name="key-features"></a>
 
----
+- [ ] **Tables**
+- [ ] **Schema**
+- [ ] **Access control**
 
-### Week 3 — GitHub Workflow
-- Create a GitHub repository.
-- Push schema, docs, and SQL files.
-- Make a Pull Request (PR) to the class repo.
-- Review at least one peer’s PR.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Deliverable:** GitHub repo + PR link.
+<!-- GETTING STARTED -->
 
----
+## 💻 Getting Started <a name="getting-started"></a>
 
-### Week 4 — Presentation & Demo
-- Present project to class (5 minutes).
-- Demo database in Supabase (sample queries).
-- Show GitHub repo and documentation.
-- Explain how another developer could build on top of it.
+To rebuild this DB, follow these steps.
 
-**Deliverable:** Final presentation + working Supabase project.
+### Prerequisites
 
----
+To run this project, you need:
+- [A Supabase account](https://supabase.com/)
+- [Knowledge on SQL](https://www.w3schools.com/sql/)
+- A schema for creating your tables in the DB
 
-## 🎯 Project Theme Examples
-Each student must choose one domain.  
-All must follow the **3 tables + 5 rows rule**.
+<!-- ### Setup -->
+### Setup
 
-1. **Library Management**
-   - `students`, `books`, `borrow_records`
+Copy the contents of this Readme.md to your Project's file
 
-2. **Event Ticketing**
-   - `users`, `events`, `tickets`
+OR
 
-3. **Restaurant Ordering**
-   - `customers`, `menu_items`, `orders`
+Clone this repository to your desired folder:
 
-4. **Fitness Tracker**
-   - `users`, `workouts`, `progress_logs`
+```sh
+  git clone https://github.com/joyapisi/readme-template-data
+  cd budget-app
+```
 
-5. **E-learning Platform**
-   - `students`, `courses`, `enrollments`
+<!-- ### DB Creation -->
 
-6. **Music Streaming**
-   - `users`, `artists`, `songs`
+### DB Schema
 
-7. **Online Store**
-   - `customers`, `products`, `orders`
+- The DB is made up of 3 tables. Eaach table has 5 entries.
+- To create the table, you will need a schema as shown below:
 
----
+```sql
+-- Drop old tables if they exist
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS customers CASCADE;
+DROP TABLE IF EXISTS books CASCADE;
+DROP TABLE IF EXISTS authors CASCADE;
 
-## ✅ Assessment (7.5 Points Each)
-- Week 1: Database setup & schema
-- Week 2: Documentation (README, dictionary, ERD)
-- Week 3: GitHub workflow (repo + PR + review)
-- Week 4: Presentation & demo
+-- Create authors table
+CREATE TABLE authors (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  country TEXT
+);
 
+-- Create books table
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  author_id INT REFERENCES authors(id),
+  price NUMERIC(8,2),
+  in_stock BOOLEAN DEFAULT true
+);
 
+-- Create customers table
+CREATE TABLE customers (
+  id SERIAL PRIMARY KEY,
+  full_name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL
+);
 
+-- Create orders table
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  customer_id INT REFERENCES customers(id),
+  book_id INT REFERENCES books(id),
+  order_date TIMESTAMP DEFAULT now()
+);
 
+-- Insert sample authors (5 rows)
+INSERT INTO authors (name, country) VALUES
+  ('Chinua Achebe', 'Nigeria'),
+  ('Ngũgĩ wa Thiong\'o', 'Kenya'),
+  ('Wole Soyinka', 'Nigeria'),
+  ('Nadine Gordimer', 'South Africa'),
+  ('Binyavanga Wainaina', 'Kenya');
 
-`schema.sql`, `security_notes.md`)  
-- Pull request submitted  
+-- Insert sample books (5 rows)
+INSERT INTO books (title, author_id, price, in_stock) VALUES
+  ('Things Fall Apart', 1, 1200.00, true),
+  ('Petals of Blood', 2, 1500.00, true),
+  ('Death and the King\'s Horseman', 3, 1800.00, true),
+  ('July\'s People', 4, 1300.00, false),
+  ('One Day I Will Write About This Place', 5, 1600.00, true);
+
+-- Insert sample customers (5 rows)
+INSERT INTO customers (full_name, email) VALUES
+  ('Joy Phoebe', 'joy@example.com'),
+  ('Brian Otieno', 'brian@example.com'),
+  ('Aisha Ali', 'aisha@example.com'),
+  ('Peter Mwangi', 'peter@example.com'),
+  ('Grace Wanjiku', 'grace@example.com');
+
+-- Insert sample orders (5 rows)
+INSERT INTO orders (customer_id, book_id) VALUES
+  (1, 1),
+  (1, 2),
+  (2, 3),
+  (3, 4),
+  (4, 5);
+```
+
+- The Tables should look like this in Supabase:
+authors
+<img width="1893" height="476" alt="image" src="https://github.com/user-attachments/assets/9a89f3ae-77d1-4ed2-a5c5-140db1e7e27b" />
+
+books:
+<img width="1881" height="445" alt="image" src="https://github.com/user-attachments/assets/d741319f-a0ff-416c-b50f-34c315c9af24" />
+
+customers:
+<img width="1881" height="505" alt="image" src="https://github.com/user-attachments/assets/354752e6-fa32-4aa8-a28f-bf99f98039f2" />
+
+orders:
+<img width="1902" height="517" alt="image" src="https://github.com/user-attachments/assets/fe99a68a-8950-4d87-82c1-25dcd3217a65" />
+
+- The ERD screenshot from Supabase looks like this: 
+<img width="1064" height="577" alt="image" src="https://github.com/user-attachments/assets/4b8a39b1-ff20-4bd3-be6f-f662b35ae49f" />
+
+- To test the table, I used two queries: 
+
+```sql
+SELECT * FROM orders
+WHERE name = "Nadine Gordimer"
+````
+
+```sql
+SELECT * FROM books
+WHERE in_stock = "TRUE"
+````
+
+- Here are the results of the queries:
+<img width="1460" height="791" alt="image" src="https://github.com/user-attachments/assets/37cf0a4e-ca92-4d8d-8888-2cca0165d32b" />
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Joy Phoebe**
+
+- GitHub: [@joyapisi](https://github.com/joyapisi)
+- Twitter: [@joyphoebe300](https://twitter.com/joyphoebe300)
+- LinkedIn: [@joyapisi](https://linkedin.com/in/joyapisi)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **Add security**
+- [ ] **Link DB to R for visualisation purposes and further analyses**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
