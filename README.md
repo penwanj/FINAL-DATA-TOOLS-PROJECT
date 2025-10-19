@@ -85,6 +85,7 @@ cd restaurant-app
 DROP TABLE IF EXISTS tickets;
 DROP TABLE IF EXISTS dancer;
 DROP TABLE IF EXISTS authors;
+````
 
 - The Tables should look like this in Supabase:
 customers:
