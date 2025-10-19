@@ -25,7 +25,8 @@
 
 # 📖 My SQL Project <a name="about-project"></a>
 
-**My SQL Project** is a simple Database that uses SQL, Postgres via Supabase to create, query and secure a **Restaurant Ordering** database.
+**My SQL Project** is a simple Database that uses SQL, Postgres via Supabase to create, query and secure a **Restaurant Ordering** database. Ideally, this database is designed to manage core transactions of a Kenyan restaurant ordering system.
+The system handles customer information (including local phone number formats), manages the menu, tracks orders, and utilizes local payment methods (like M-Pesa and Debit Card).
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -167,19 +168,19 @@ INSERT INTO order_details (order_detail_id, order_id, item_id, quantity, unit_pr
 
 - The Tables should look like this in Supabase:
 customers:
-
+<img width="1055" height="469" alt="image" src="https://github.com/user-attachments/assets/bff700bf-0400-4c90-b9c7-65757423858e" />
 
 menu_items:
-
+<img width="1058" height="439" alt="image" src="https://github.com/user-attachments/assets/a211c5a5-038c-4d39-8df0-412e31065ff3" />
 
 orders:
-
+<img width="1056" height="473" alt="image" src="https://github.com/user-attachments/assets/64eb5128-61bf-463b-a759-e32e74b17e32" />
 
 order_details:
+<img width="1059" height="403" alt="image" src="https://github.com/user-attachments/assets/188aaa46-c266-48fb-b368-fba75abc2d42" />
 
-
-- The ERD screenshot from Supabase looks like this: 
-
+- The ERD screenshot from dbdiagram.io looks like this: 
+<img width="1184" height="526" alt="image" src="https://github.com/user-attachments/assets/58c285f8-8cfa-4194-8303-9d7e7cb052f9" />
 
 - To test the table, I used two queries: 
 
