@@ -168,3 +168,6 @@ Feel free to check the [issues page](../../issues/).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
+
+
+<img width="1055" height="469" alt="image" src="https://github.com/user-attachments/assets/bff700bf-0400-4c90-b9c7-65757423858e" />
