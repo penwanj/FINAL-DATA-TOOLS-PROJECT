@@ -88,6 +88,7 @@ DROP TABLE IF EXISTS authors;
 ````
 
 - The Tables should look like this in Supabase:
+  
 customers:
 <img width="1055" height="469" alt="image" src="https://github.com/user-attachments/assets/bff700bf-0400-4c90-b9c7-65757423858e" />
 
@@ -118,6 +119,7 @@ WHERE
     is_available = 'No';
 ````
 
+
 ```sql
 SELECT
     o.order_id,
@@ -135,6 +137,7 @@ ORDER BY
 
 - Here are the results of the queries:
 <img width="1004" height="448" alt="image" src="https://github.com/user-attachments/assets/ed582017-9f87-445c-bd60-3c7885ba1720" />
+
 
 <img width="867" height="538" alt="image" src="https://github.com/user-attachments/assets/aac19533-5df0-4e73-b42b-cc611d4d6880" />
 
