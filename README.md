@@ -33,6 +33,7 @@ The system handles customer information (including local phone number formats), 
 ### Tech Stack <a name="tech-stack"></a>
 - SQL
 - Postgres DB
+- dbdiagram.io
 
 <!-- Features -->
 
@@ -55,6 +56,7 @@ To run this project, you need:
 - [A Supabase account](https://supabase.com/)
 - [Knowledge on SQL](https://www.w3schools.com/sql/)
 - A schema for creating your tables in the DB
+- knowledge on how to use dbdiagram.io to generate ERDs
 
 <!-- ### Setup -->
 ### Setup
@@ -66,8 +68,8 @@ OR
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/joyapisi/readme-template-data
-  cd restaurant-app
+  git clone https://github.com/penwanj/restaurant-app
+cd restaurant-app
 ```
 
 <!-- ### DB Creation -->
@@ -79,10 +81,9 @@ Clone this repository to your desired folder:
 
 ```sql
 -- Drop old tables if they exist
-DROP TABLE IF EXISTS orders ticket;
-DROP TABLE IF EXISTS customers customer;
-DROP TABLE IF EXISTS books room;
-DROP TABLE IF EXISTS authors item;
+DROP TABLE IF EXISTS tickets;
+DROP TABLE IF EXISTS dancer;
+DROP TABLE IF EXISTS authors;
 
 -- Create customers table
 CREATE TABLE customers (
@@ -92,10 +93,6 @@ CREATE TABLE customers (
     phone_number VARCHAR(15) UNIQUE NOT NULL, 
     city VARCHAR(50) NOT NULL
 );
-
-<img width="975" height="429" alt="image" src="https://github.com/user-attachments/assets/d2fd6813-f9a5-4e58-8842-4b2e5c7bfab5" />
-<img width="975" height="429" alt="image" src="https://github.com/user-attachments/assets/5542133c-3794-4310-8e40-423cbd7563c4" />
-
 
 -- Create menu_items table
 CREATE TABLE menu_items (
@@ -211,9 +208,9 @@ ORDER BY
 ````
 
 - Here are the results of the queries:
-<img width="975" height="433" alt="image" src="https://github.com/user-attachments/assets/a1c51ee9-19b7-493f-b84b-d0bfe274c937" />
+<img width="1004" height="448" alt="image" src="https://github.com/user-attachments/assets/ed582017-9f87-445c-bd60-3c7885ba1720" />
 
-<img width="975" height="605" alt="image" src="https://github.com/user-attachments/assets/4194d806-338f-45b1-8040-693aa239694e" />
+<img width="867" height="538" alt="image" src="https://github.com/user-attachments/assets/aac19533-5df0-4e73-b42b-cc611d4d6880" />
 
 <!-- AUTHORS -->
 
